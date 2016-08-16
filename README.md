@@ -1,5 +1,18 @@
 # tf_pipeline
 
+Generates [Jenkins Pipeline](https://jenkins.io/solutions/pipeline/) jobs that
+manage and run [Terraform](http://terraform.io/) with remote state locking, pull
+request integration and chat notifications.
+
+
+## Example
+
+A brief demo of `terraform plan` triggering automatically when a pull request is
+opened:
+
+![plan_demo](http://i.imgur.com/VH9KLqE.gif)
+
+
 ## Usage
 
 ### PLAN
@@ -95,6 +108,9 @@ operational notes below
   * See https://github.com/KostyaSha/github-integration-plugin/wiki/FAQ if you
     experience issues triggering _PLAN_ jobs via pull request due to
     `$GITHUB_PR_NUMBER` not being set
+  * Terraform variables can be baked into the job configuration by adding them
+    to the _env_vars_ field in the format `TF_VAR_name`. For details see the
+    [terraform documentation section on environmental variables](https://www.terraform.io/docs/configuration/environment-variables.html)
 
 
 ## Known Issues
@@ -106,3 +122,16 @@ operational notes below
     TAINT and UNTAINT jobs are not. Be careful. (todo: prevent these jobs from
     running in parallel)
   
+
+## Other Notes
+
+The Pipeline plugin has a feature that exposes a git repository that _global
+shared libraries_ can be pushed to. I've chosen _not_ to use this feature
+because of the additional setup complexity and because I believe it's easier to
+grok the code when the script is visible in the pipeline configuration. It also
+improves the usefulness of the _Replay_ button on pipeline jobs.
+
+It should be possible to use Jenkins artifact storage in place of remote state.
+There are some obvious advantages and disadvantages to doing this. It will
+likely be added at some point as an optional feature.
+

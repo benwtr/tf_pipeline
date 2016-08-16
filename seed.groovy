@@ -111,9 +111,9 @@ job('create_terraform_jobs') {
           withEnv(_env_vars) {
             node {
               pull_request=true
+              git_checkout()
               prepare_workspace()
               setup_tf()
-              git_checkout() 
               tf_validate()
               fetch_modules()
               initialize_remote_state()
@@ -145,9 +145,9 @@ job('create_terraform_jobs') {
         def tf_apply_job = tf_job 'APPLY', """
           withEnv(_env_vars) {
             node {
+              git_checkout()
               prepare_workspace()
               setup_tf()
-              git_checkout() 
               tf_validate()
               fetch_modules()
               initialize_remote_state()
@@ -171,9 +171,9 @@ job('create_terraform_jobs') {
           def tf_destroy_job = tf_job 'DESTROY', """
             withEnv(_env_vars) {
               node {
+                git_checkout()
                 prepare_workspace()
                 setup_tf()
-                git_checkout() 
                 tf_validate()
                 fetch_modules()
                 initialize_remote_state()
@@ -191,9 +191,9 @@ job('create_terraform_jobs') {
         def tf_taint_job = tf_job 'TAINT', """
           withEnv(_env_vars) {
             node {
+              git_checkout()
               prepare_workspace()
               setup_tf()
-              git_checkout() 
               tf_validate()
               fetch_modules()
               initialize_remote_state()
@@ -218,9 +218,9 @@ job('create_terraform_jobs') {
         def tf_untaint_job = tf_job 'UNTAINT', """
           withEnv(_env_vars) {
             node {
+              git_checkout()
               prepare_workspace()
               setup_tf()
-              git_checkout() 
               tf_validate()
               fetch_modules()
               initialize_remote_state()

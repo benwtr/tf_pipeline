@@ -15,7 +15,7 @@ you should not use remote state from your local workstation. However, you may
 want to run `terraform validate` for a syntax check before pushing code.
 
 The **GitHub PR** option in the sidebar on the PLAN job page has options for
-re-triggering jobs if you need to re-kick them. (you will)
+re-triggering jobs if you need to re-kick them.
 
 ### APPLY
 
@@ -99,10 +99,6 @@ operational notes below
 
 ## Known Issues
 
-  * Jobs fail the first time they are run due to jenkins pipeline using a path
-    like `workspace@tmp/durable-5494ef51/` instead of `workspace/`, I haven't
-    looked in to why pipeline does this but it seems to be more of a feature
-    than a bug
   * It's quite noisy (todo: don't prompt if there are no changes to apply, and
     maybe just output "No changes" instead of the full plan output on PRs)
   * While the APPLY job is not permitted to run in parallel, effectively

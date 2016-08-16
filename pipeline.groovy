@@ -17,8 +17,9 @@ def _sh(script) {
         sh '''\
           #!/bin/bash
           set -x
-          set +e
+          set -e
           cd ./${gh_path}
+          set +e
         '''.stripIndent() + script
       }
     }

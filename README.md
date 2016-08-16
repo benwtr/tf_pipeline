@@ -8,9 +8,9 @@ request integration and chat notifications.
 ## Example
 
 A brief demo of `terraform plan` triggering automatically when a pull request is
-opened:
+opened, then writing the plan output to a comment.
 
-![plan_demo](http://i.imgur.com/VH9KLqE.gif)
+![plan_demo](http://imgur.com/6GylbL2.gif)
 
 
 ## Usage

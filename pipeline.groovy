@@ -69,7 +69,10 @@ def setup_tf() {
 
       if [ "$(sha256sum ${tf_zipfile} | awk '{print $1}')" = "${tf_sha256}" ]
       then
-        unzip -o ${tf_zipfile} -d bin
+        if [ ! -x "./bin/terraform" ]
+        then
+          unzip -o ${tf_zipfile} -d bin
+        fi
       else
         echo "Checksum on downloaded terraform archive was incorrect, please check"
         exit 1

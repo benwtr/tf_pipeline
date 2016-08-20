@@ -1,6 +1,6 @@
 #!groovy
 
-# Based on https://github.com/thomasleveil/docker-jenkins-dsl-ready/blob/master/build/create-seed-job.groovy
+// Based on https://github.com/thomasleveil/docker-jenkins-dsl-ready/blob/master/build/create-seed-job.groovy
 
 import jenkins.model.*
 
